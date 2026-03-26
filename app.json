@@ -1,20 +1,24 @@
 {
   "expo": {
-    "name": "Eventsnap",
+    "name": "PhotoBooth Pro",
     "slug": "eventsnap",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "fastshot",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "PhotoBooth Pro needs camera access to take photos at events.",
+        "NSPhotoLibraryUsageDescription": "PhotoBooth Pro needs photo library access to import photos from external cameras."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#0A0A0F"
       },
       "edgeToEdgeEnabled": true
     },
@@ -31,7 +35,14 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#0A0A0F"
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "PhotoBooth Pro needs photo library access to import photos from external cameras.",
+          "cameraPermission": "PhotoBooth Pro needs camera access to take photos at events."
         }
       ]
     ],
