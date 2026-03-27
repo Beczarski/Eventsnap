@@ -13,6 +13,8 @@ interface GoldInputProps {
   multiline?: boolean;
   style?: ViewStyle;
   editable?: boolean;
+  secureTextEntry?: boolean;
+  rightElement?: React.ReactNode;
 }
 
 export function GoldInput({
@@ -25,6 +27,8 @@ export function GoldInput({
   multiline = false,
   style,
   editable = true,
+  secureTextEntry = false,
+  rightElement,
 }: GoldInputProps) {
   return (
     <View style={[{ gap: Spacing.xs }, style]}>
@@ -71,6 +75,7 @@ export function GoldInput({
           keyboardType={keyboardType}
           multiline={multiline}
           editable={editable}
+          secureTextEntry={secureTextEntry}
           style={{
             flex: 1,
             fontFamily: Fonts.regular,
@@ -79,6 +84,7 @@ export function GoldInput({
             paddingVertical: Spacing.md,
           }}
         />
+        {rightElement}
       </View>
     </View>
   );

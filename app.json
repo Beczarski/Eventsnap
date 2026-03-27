@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "PhotoBooth Pro",
+    "name": "Eventsnap",
     "slug": "eventsnap",
     "version": "1.0.0",
     "orientation": "default",
@@ -12,15 +12,20 @@
       "supportsTablet": true,
       "infoPlist": {
         "NSCameraUsageDescription": "PhotoBooth Pro needs camera access to take photos at events.",
-        "NSPhotoLibraryUsageDescription": "PhotoBooth Pro needs photo library access to import photos from external cameras."
-      }
+        "NSPhotoLibraryUsageDescription": "PhotoBooth Pro needs photo library access to import photos from external cameras.",
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "bundleIdentifier": "com.beczarski.eventsnap"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#0A0A0F"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -49,6 +54,13 @@
     "experiments": {
       "typedRoutes": true,
       "baseUrl": ""
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "8d9d3c53-c973-4b8c-bbab-1696b1fce9c8"
+      }
+    },
+    "owner": "beczarski"
   }
 }

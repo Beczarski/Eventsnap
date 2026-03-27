@@ -384,6 +384,72 @@ export default function AdminScreen() {
         </View>
       )}
 
+      {/* Email Settings Section */}
+      <View style={{ marginBottom: Spacing.xxxl }}>
+        <Text
+          style={{
+            fontFamily: Fonts.semiBold,
+            fontSize: 14,
+            color: Colors.textSecondary,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+            marginBottom: Spacing.lg,
+          }}
+        >
+          Ustawienia poczty
+        </Text>
+        <Pressable
+          onPress={() => router.push('/email-settings')}
+          style={({ pressed }) => ({
+            backgroundColor: Colors.surface,
+            borderRadius: Radius.lg,
+            borderCurve: 'continuous',
+            padding: Spacing.xl,
+            borderWidth: 1,
+            borderColor: Colors.border,
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: Spacing.lg,
+            opacity: pressed ? 0.85 : 1,
+          })}
+        >
+          <View
+            style={{
+              width: 48,
+              height: 48,
+              borderRadius: 24,
+              backgroundColor: 'rgba(200, 169, 110, 0.12)',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Ionicons name="mail" size={24} color={Colors.primary} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text
+              style={{
+                fontFamily: Fonts.semiBold,
+                fontSize: 15,
+                color: Colors.text,
+              }}
+            >
+              Konfiguracja SMTP
+            </Text>
+            <Text
+              style={{
+                fontFamily: Fonts.regular,
+                fontSize: 12,
+                color: Colors.textSecondary,
+                marginTop: 2,
+              }}
+            >
+              Serwer, dane logowania, szablon wiadomości
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={20} color={Colors.textMuted} />
+        </Pressable>
+      </View>
+
       {/* All Events */}
       <View style={{ gap: Spacing.lg }}>
         <Text

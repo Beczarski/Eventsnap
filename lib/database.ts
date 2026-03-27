@@ -174,6 +174,51 @@ export type Database = {
         };
         Relationships: [];
       };
+      email_settings: {
+        Row: {
+          id: string;
+          smtp_server: string;
+          smtp_port: number;
+          encryption: string;
+          username: string;
+          password: string;
+          sender_name: string;
+          reply_to: string | null;
+          email_subject_template: string;
+          email_body_template: string;
+          created_at: string | null;
+          updated_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          smtp_server?: string;
+          smtp_port?: number;
+          encryption?: string;
+          username?: string;
+          password?: string;
+          sender_name?: string;
+          reply_to?: string | null;
+          email_subject_template?: string;
+          email_body_template?: string;
+          created_at?: string | null;
+          updated_at?: string | null;
+        };
+        Update: {
+          id?: string;
+          smtp_server?: string;
+          smtp_port?: number;
+          encryption?: string;
+          username?: string;
+          password?: string;
+          sender_name?: string;
+          reply_to?: string | null;
+          email_subject_template?: string;
+          email_body_template?: string;
+          created_at?: string | null;
+          updated_at?: string | null;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
@@ -200,5 +245,8 @@ export type ShareRow = Database['public']['Tables']['shares']['Row'];
 export type ShareInsert = Database['public']['Tables']['shares']['Insert'];
 export type CanonCameraRow = Database['public']['Tables']['canon_cameras']['Row'];
 export type CanonCameraInsert = Database['public']['Tables']['canon_cameras']['Insert'];
+export type EmailSettingsRow = Database['public']['Tables']['email_settings']['Row'];
+export type EmailSettingsUpdate = Database['public']['Tables']['email_settings']['Update'];
 
 export type PhotoSource = 'ipad_camera' | 'canon_import' | 'photos_library';
+export type EncryptionType = 'ssl' | 'tls' | 'starttls' | 'none';

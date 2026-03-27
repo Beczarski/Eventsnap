@@ -49,6 +49,14 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen name="print" />
+        <Stack.Screen name="email-settings" />
+        <Stack.Screen
+          name="email-compose"
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
       </Stack>
     </>
   );

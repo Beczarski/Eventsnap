@@ -1,4 +1,4 @@
-import type { EventRow, PhotoRow } from '@/lib/database';
+import type { EventRow, PhotoRow, EmailSettingsRow } from '@/lib/database';
 
 export interface Preferences {
   activeEventId?: string;
@@ -6,4 +6,4 @@ export interface Preferences {
   defaultCopies?: number;
 }
 
-export type { EventRow, PhotoRow };
+export type { EventRow, PhotoRow, EmailSettingsRow };

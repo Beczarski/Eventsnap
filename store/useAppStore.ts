@@ -1,12 +1,13 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import type { Preferences, EventRow, PhotoRow } from './types';
+import type { Preferences, EventRow, PhotoRow, EmailSettingsRow } from './types';
 
 interface AppState {
   preferences: Preferences;
   activeEvent: EventRow | null;
   photos: PhotoRow[];
+  emailSettings: EmailSettingsRow | null;
   setActiveEvent: (event: EventRow | null) => void;
   setActiveEventId: (id: string | undefined) => void;
   setPhotos: (photos: PhotoRow[]) => void;
@@ -15,6 +16,7 @@ interface AppState {
   updatePhoto: (id: string, updates: Partial<PhotoRow>) => void;
   setPrintSize: (size: string) => void;
   setDefaultCopies: (copies: number) => void;
+  setEmailSettings: (settings: EmailSettingsRow | null) => void;
 }
 
 export type AppStore = AppState;
@@ -28,6 +30,7 @@ export const useAppStore = create<AppStore>()(
       },
       activeEvent: null,
       photos: [],
+      emailSettings: null,
       setActiveEvent: (event) =>
         set((state) => ({
           activeEvent: event,
@@ -58,6 +61,7 @@ export const useAppStore = create<AppStore>()(
         set((state) => ({
           preferences: { ...state.preferences, defaultCopies: copies },
         })),
+      setEmailSettings: (settings) => set({ emailSettings: settings }),
     }),
     {
       name: 'photobooth-storage',
@@ -65,6 +69,7 @@ export const useAppStore = create<AppStore>()(
       partialize: (state) => ({
         preferences: state.preferences,
         activeEvent: state.activeEvent,
+        emailSettings: state.emailSettings,
       }),
     }
   )
