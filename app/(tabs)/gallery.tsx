@@ -19,7 +19,7 @@ import { supabase } from '@/lib/supabase';
 import { useAppStore } from '@/store/useAppStore';
 import type { PhotoRow } from '@/lib/database';
 
-type FilterType = 'all' | 'printed' | 'shared';
+type FilterType = 'all' | 'printed' | 'shared' | 'canon';
 
 export default function GalleryScreen() {
   const router = useRouter();
@@ -70,11 +70,13 @@ export default function GalleryScreen() {
   const filteredPhotos = photos.filter((p) => {
     if (filter === 'printed') return p.is_printed;
     if (filter === 'shared') return p.is_shared;
+    if (filter === 'canon') return p.source === 'canon_import';
     return true;
   });
 
   const filters: { id: FilterType; label: string; icon: keyof typeof Ionicons.glyphMap }[] = [
     { id: 'all', label: 'All', icon: 'grid' },
+    { id: 'canon', label: 'Canon', icon: 'camera' },
     { id: 'printed', label: 'Printed', icon: 'print' },
     { id: 'shared', label: 'Shared', icon: 'share' },
   ];
@@ -136,6 +138,9 @@ export default function GalleryScreen() {
           backgroundColor: 'rgba(10, 10, 15, 0.6)',
         }}
       >
+        {item.source === 'canon_import' && (
+          <Ionicons name="camera" size={12} color={Colors.accent} />
+        )}
         {item.is_printed && (
           <Ionicons name="print" size={12} color={Colors.primary} />
         )}

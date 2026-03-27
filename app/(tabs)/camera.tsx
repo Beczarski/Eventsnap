@@ -47,7 +47,7 @@ export default function CameraScreen() {
   }, [activeEvent, loadPhotoCount]);
 
   const uploadPhoto = useCallback(
-    async (uri: string) => {
+    async (uri: string, source: 'ipad_camera' | 'photos_library' = 'ipad_camera') => {
       if (!activeEvent) {
         Alert.alert('No Event', 'Please set up an event first');
         return;
@@ -77,6 +77,7 @@ export default function CameraScreen() {
           .insert({
             event_id: activeEvent.id,
             original_url: urlData.publicUrl,
+            source,
           })
           .select()
           .single();
@@ -106,7 +107,7 @@ export default function CameraScreen() {
       });
       if (!result.canceled && result.assets.length > 0) {
         for (const asset of result.assets) {
-          await uploadPhoto(asset.uri);
+          await uploadPhoto(asset.uri, 'photos_library');
         }
       }
     } catch {

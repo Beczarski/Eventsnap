@@ -38,6 +38,15 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
+        name="canon"
+        options={{
+          title: 'Canon WiFi',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="wifi" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="gallery"
         options={{
           title: 'Gallery',
