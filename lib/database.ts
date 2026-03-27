@@ -60,6 +60,7 @@ export type Database = {
           processed_url: string | null;
           share_token: string | null;
           shared_via: string[] | null;
+          source: string;
         };
         Insert: {
           created_at?: string;
@@ -72,6 +73,7 @@ export type Database = {
           processed_url?: string | null;
           share_token?: string | null;
           shared_via?: string[] | null;
+          source?: string;
         };
         Update: {
           created_at?: string;
@@ -84,6 +86,7 @@ export type Database = {
           processed_url?: string | null;
           share_token?: string | null;
           shared_via?: string[] | null;
+          source?: string;
         };
         Relationships: [];
       };
@@ -141,6 +144,36 @@ export type Database = {
         };
         Relationships: [];
       };
+      canon_cameras: {
+        Row: {
+          id: string;
+          event_id: string;
+          model: string;
+          ip_address: string;
+          nickname: string | null;
+          last_connected: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          event_id: string;
+          model: string;
+          ip_address: string;
+          nickname?: string | null;
+          last_connected?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          event_id?: string;
+          model?: string;
+          ip_address?: string;
+          nickname?: string | null;
+          last_connected?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
@@ -165,3 +198,7 @@ export type PrintJobRow = Database['public']['Tables']['print_jobs']['Row'];
 export type PrintJobInsert = Database['public']['Tables']['print_jobs']['Insert'];
 export type ShareRow = Database['public']['Tables']['shares']['Row'];
 export type ShareInsert = Database['public']['Tables']['shares']['Insert'];
+export type CanonCameraRow = Database['public']['Tables']['canon_cameras']['Row'];
+export type CanonCameraInsert = Database['public']['Tables']['canon_cameras']['Insert'];
+
+export type PhotoSource = 'ipad_camera' | 'canon_import' | 'photos_library';
